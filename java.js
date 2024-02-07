@@ -4,6 +4,8 @@ const SCISSORS = "scissors"
 let usrScore = 0;
 let cpuScore = 0;
 
+function playGame(){
+
 function getComputerChoice(){
   let cpuOptions = ["rock","paper","scissors"];
   let random = Math.floor(Math.random() * cpuOptions.length);
@@ -59,6 +61,7 @@ function playRound(playerSelection, computerSelection){
     return getBack;
   }
 }  
+
 const playerSelection = getUserChoice();
 const computerSelection = getComputerChoice();
 const thisRound = playRound(playerSelection,computerSelection);
@@ -67,3 +70,20 @@ console.log("CPU: " + computerSelection);
 console.log(thisRound[0]);
 console.log("User Score: "+ usrScore);
 console.log("CPU Score: " + cpuScore);
+console.log("************************");
+}
+while(usrScore < 4 && cpuScore < 4){
+  playGame()
+}
+  console.log("GAME OVER!");
+  console.log("FINAL SCORE: ");
+  console.log("USER: " + usrScore);
+  console.log("CPU: " + cpuScore);
+  if (usrScore > cpuScore){
+    console.log("USER WINS!!!");
+    console.log("************************");
+  }
+  else if (cpuScore > usrScore){
+    console.log("CPU WINS :(");
+    console.log("************************");
+  }
