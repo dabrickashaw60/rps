@@ -3,18 +3,27 @@ const PAPER = "paper"
 const SCISSORS = "scissors"
 let usrScore = 0;
 let cpuScore = 0;
+let currentRound = 1;
+const startBtn = document.querySelector('#start');
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+const btnClass = document.querySelectorAll('buttons');
+const holder = document.querySelector('#holder');
 
-function playGame(){
+startBtn.addEventListener('click', () => {
+  startGame();
+});
+
+function startGame(){
+
+function playGame(){ 
 
 function getComputerChoice(){
   let cpuOptions = ["rock","paper","scissors"];
   let random = Math.floor(Math.random() * cpuOptions.length);
   let cpuChoice = cpuOptions[random];
   return cpuChoice;
-}
-function getUserChoice(){
-  let usrChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
-  return usrChoice;
 }
 
 function playRound(playerSelection, computerSelection){
@@ -62,28 +71,101 @@ function playRound(playerSelection, computerSelection){
   }
 }  
 
-const playerSelection = getUserChoice();
+
 const computerSelection = getComputerChoice();
 const thisRound = playRound(playerSelection,computerSelection);
-console.log("User: " + playerSelection);
-console.log("CPU: " + computerSelection);
-console.log(thisRound[0]);
-console.log("User Score: "+ usrScore);
-console.log("CPU Score: " + cpuScore);
-console.log("************************");
+const content = document.createElement('div');
+content.classList.add('content');
+content.innerHTML = "<h2>" + 'ROUND ' + currentRound + "</h2>";
+content.innerHTML += 'USER: ' + playerSelection + "<br />";
+content.innerHTML += 'CPU: ' + computerSelection + "<br />";
+content.innerHTML += thisRound[0] + "<br />";
+content.innerHTML += 'User Score: ' + usrScore + "<br />";
+content.innerHTML += 'CPU Score: ' + cpuScore + "<br />";
+
+holder.appendChild(content);
 }
-while(usrScore < 4 && cpuScore < 4){
-  playGame()
+
+  rockBtn.addEventListener('click', () => {
+    playerSelection = "rock";
+  
+    playGame();
+
+    if(usrScore >= 4 || cpuScore >= 4){
+      console.log("GAME OVER!");
+      console.log("FINAL SCORE: ");
+      console.log("USER: " + usrScore);
+      console.log("CPU: " + cpuScore);
+        if (usrScore > cpuScore){
+        console.log("USER WINS!!!");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;
+        }
+        else if (cpuScore > usrScore){
+        console.log("CPU WINS :(");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;        
+        }
+        else{
+        
+        } 
+    };
+  }); 
+  paperBtn.addEventListener('click', () => {
+    playerSelection = "paper";
+  
+    playGame();
+
+    if(usrScore >= 4 || cpuScore >= 4){
+      console.log("GAME OVER!");
+      console.log("FINAL SCORE: ");
+      console.log("USER: " + usrScore);
+      console.log("CPU: " + cpuScore);
+        if (usrScore > cpuScore){
+        console.log("USER WINS!!!");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;        
+        }
+        else if (cpuScore > usrScore){
+        console.log("CPU WINS :(");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;        
+        }
+        else{
+        
+        } 
+    };
+  }); 
+  scissorsBtn.addEventListener('click', () => {
+    playerSelection = "scissors";
+  
+    playGame();
+
+    if(usrScore >= 4 || cpuScore >= 4){
+      console.log("GAME OVER!");
+      console.log("FINAL SCORE: ");
+      console.log("USER: " + usrScore);
+      console.log("CPU: " + cpuScore);
+        if (usrScore > cpuScore){
+        console.log("USER WINS!!!");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;        
+        }
+        else if (cpuScore > usrScore){
+        console.log("CPU WINS :(");
+        console.log("************************");
+        usrScore = 0;
+        cpuScore = 0;        
+        }
+        else{
+        
+        } 
+    };
+  });     
+
 }
-  console.log("GAME OVER!");
-  console.log("FINAL SCORE: ");
-  console.log("USER: " + usrScore);
-  console.log("CPU: " + cpuScore);
-  if (usrScore > cpuScore){
-    console.log("USER WINS!!!");
-    console.log("************************");
-  }
-  else if (cpuScore > usrScore){
-    console.log("CPU WINS :(");
-    console.log("************************");
-  }
