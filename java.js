@@ -19,6 +19,8 @@ function startGame(){
 
 function playGame(){ 
 
+holder.replaceChildren();
+
 function getComputerChoice(){
   let cpuOptions = ["rock","paper","scissors"];
   let random = Math.floor(Math.random() * cpuOptions.length);
@@ -75,7 +77,6 @@ function playRound(playerSelection, computerSelection){
 const computerSelection = getComputerChoice();
 const thisRound = playRound(playerSelection,computerSelection);
 const content = document.createElement('div');
-content.classList.add('content');
 content.innerHTML = "<h2>" + 'ROUND ' + currentRound + "</h2>";
 content.innerHTML += 'USER: ' + playerSelection + "<br />";
 content.innerHTML += 'CPU: ' + computerSelection + "<br />";
@@ -84,6 +85,8 @@ content.innerHTML += 'User Score: ' + usrScore + "<br />";
 content.innerHTML += 'CPU Score: ' + cpuScore + "<br />";
 
 holder.appendChild(content);
+currentRound++;
+
 }
 
   rockBtn.addEventListener('click', () => {
@@ -101,12 +104,14 @@ holder.appendChild(content);
         console.log("************************");
         usrScore = 0;
         cpuScore = 0;
+        currentRound = 1;
         }
         else if (cpuScore > usrScore){
         console.log("CPU WINS :(");
         console.log("************************");
         usrScore = 0;
-        cpuScore = 0;        
+        cpuScore = 0;
+        currentRound = 1;        
         }
         else{
         
@@ -127,13 +132,15 @@ holder.appendChild(content);
         console.log("USER WINS!!!");
         console.log("************************");
         usrScore = 0;
-        cpuScore = 0;        
+        cpuScore = 0; 
+        currentRound = 1;       
         }
         else if (cpuScore > usrScore){
         console.log("CPU WINS :(");
         console.log("************************");
         usrScore = 0;
-        cpuScore = 0;        
+        cpuScore = 0; 
+        currentRound = 1;       
         }
         else{
         
@@ -154,13 +161,15 @@ holder.appendChild(content);
         console.log("USER WINS!!!");
         console.log("************************");
         usrScore = 0;
-        cpuScore = 0;        
+        cpuScore = 0; 
+        currentRound = 1;       
         }
         else if (cpuScore > usrScore){
         console.log("CPU WINS :(");
         console.log("************************");
         usrScore = 0;
-        cpuScore = 0;        
+        cpuScore = 0; 
+        currentRound = 1;       
         }
         else{
         
